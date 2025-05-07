@@ -1,0 +1,35 @@
+.div{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-image: url('https://preview.colorlib.com/theme/eatwell/images/bg_3.jpg');
+}
+.txt{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    h1{
+        font-size: 50px;
+    }
+    p{
+        font-size: 20px;
+    }
+    button{
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid black;
+            cursor: pointer;
+            color: black;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 20px;
+           &:hover{
+        background-color: white;
+           }
+        }
+        .btn button:hover {
+            background: #f41068
+          }
+    }

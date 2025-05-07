@@ -1,0 +1,45 @@
+.esas{
+    width: 100%;
+    gap: 50px;
+    height: 750px;
+    display:flex;
+    align-items: center;
+}
+.div1{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 400px;
+    h2{
+        font-size: 30px;
+    }
+    .gary{
+        color: gray;
+        font-size: 20px;
+    }
+
+    .gary1{
+        color: gray;
+        font-size: 18px;
+    }
+}
+.sekil img{
+    width: 70%;
+   height: 36 0px;
+}
+.btn{
+   width: 236px;
+   height: 54px;
+    background: transparent;
+    border: 1px solid gray;
+    cursor: pointer;
+    color: gray;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 20px;
+    font-weight: 400px;
+&:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+}

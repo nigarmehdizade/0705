@@ -9,6 +9,6 @@ app.use(cors({origin:"*"}))
 
 connectDB()
 app.use('/', testProduct)
-app.listen(5000, ()=>{
+app.listen(4000, ()=>{
     console.log("backend qalxdi");
 })

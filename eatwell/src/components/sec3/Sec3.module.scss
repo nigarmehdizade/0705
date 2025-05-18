@@ -43,3 +43,39 @@
     cursor: pointer;
 }
 }
+@media (max-width: 576px) {
+    .esas {
+        flex-direction: column; /* Mobil üçün sətir-sətir */
+        height: auto; /* Hündürlüyü avtomatik olsun */
+        padding: 20px; /* Daxili boşluq əlavə edildi */
+        gap: 20px; /* Elementlər arası boşluq */
+    }
+
+    .div1 {
+        width: 100%;
+        margin-left: 0; /* Mobil üçün mərkəzləşir */
+        text-align: center; /* Mətnlər ortalanır */
+    }
+
+    .div1 h2 {
+        font-size: 24px;
+    }
+
+    .div1 .gary {
+        font-size: 18px;
+    }
+
+    .div1 .gary1 {
+        font-size: 16px;
+    }
+
+    .sekil img {
+        width: 100%; 
+        height: auto; 
+    }
+
+    .btn {
+        width: 200px;
+        font-size: 18px;
+    }
+}

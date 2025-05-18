@@ -2,15 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getProductThunk=createAsyncThunk('./product/get',async()=>{
-    const res=await axios.get("http://localhost:5000/pro")
+    const res=await axios.get("http://localhost:4000/eat")
     return res.data
 })
 export const postProductThunk=createAsyncThunk('/product/post',async()=>{
-    await axios.post("http://localhost:5000/pro")
+    await axios.post("http://localhost:4000/eat")
     return res.data
 })
 export const deleteProductThunk =createAsyncThunk('/product/delete',async()=>{
-    await axios.delete("http://localhost:5000/pro")
+    await axios.delete("http://localhost:4000/eat")
     return id
 })
 const productSlice=createSlice({

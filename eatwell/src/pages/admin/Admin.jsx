@@ -1,86 +1,97 @@
-import React, { useEffect } from 'react'
-import style from './Admin.module.scss'
-import { useFormik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import * as Yup from "Yup"
-import { getProductThunk } from '../../redux/reducer/productSlice';
-import Sec4 from '../../components/sec4/Sec4';
+import React, { useEffect, useState } from 'react';
+import styles from './Admin.module.scss';
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router';
+import { getProductThunk, postProductThunk } from '../../redux/reducer/productSlice.js';
+import ACard from './components/ACard.jsx';
 
 const Admin = () => {
+    const dispatch = useDispatch();
+    const data = useSelector((state) => state.product.products);
 
-    const valSchema = Yup.object({
-        name: Yup.string().required("Name").min(2, "qisa"),
-        des: Yup.string().required("Title").min(2, "qisa"),
-        price: Yup.string().required("Price").min(1, "qisa"),
-        image: Yup.string().required("Image").min(1, "qisa"),
-    })
-
-    const dispatch = useDispatch()
-    const data = useSelector(state => state.product.data)
+    const [filterText, setFilterText] = useState('');
+    const [sortType, setSortType] = useState('default');
 
     useEffect(() => {
-        dispatch(getProductThunk())
-    }, [])
+        dispatch(getProductThunk());
+    }, [dispatch]);
+
+    const valSchema = Yup.object({
+        name: Yup.string().required('Name is required').min(2, 'Name must be at least 2 characters'),
+        price: Yup.string().required('Price is required').min(1, 'Price must be at least 1 character'),
+        image: Yup.string().required('Image is required').min(2, 'Image must be at least 2 characters')
+    });
 
     const formik = useFormik({
         initialValues: {
-          name: '',
-          des: '',
-          price: '',
-          image: ''
+            name: '',
+            price: '',
+            image: '',
         },
         validationSchema: valSchema,
         onSubmit: values => {
-            dispatch(postProductThunk(values))
+            dispatch(postProductThunk(values));
+            formik.resetForm();
         },
-      });
+    });
+
+    const filteredData = data
+        ?.filter(item =>
+            item.name.toLowerCase().includes(filterText.toLowerCase())
+        )
+        ?.sort((a, b) => {
+            if (sortType === 'asc') return a.price - b.price;
+            if (sortType === 'desc') return b.price - a.price;
+            return 0;
+        });
 
     return (
-        <div className={style.main}>
-            
-            <form onSubmit={formik.handleSubmit}>
-                <label htmlFor="name">Name</label>
+        <div className={styles.container}>
+            <header>
+                <Link to="/">Home</Link>
+                <Link to="/basket">Basket</Link>
+                <Link to="/wishlist">Wishlist</Link>
+            </header>
+
+            <div className={styles.search}>
+                <form onSubmit={formik.handleSubmit}>
+                    <label htmlFor="name">Name</label>
+                    <input id="name" name="name" type="text" {...formik.getFieldProps('name')} />
+
+                    <label htmlFor="price">Price</label>
+                    <input id="price" name="price" type="text" {...formik.getFieldProps('price')} />
+
+                    <label htmlFor="image">Image</label>
+                    <input id="image" name="image" type="text" {...formik.getFieldProps('image')} />
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <div className={styles.controls}>
                 <input
-                    id="name"
-                    name="name"
                     type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.name}
+                    placeholder="Search by name..."
+                    value={filterText}
+                    onChange={(e) => setFilterText(e.target.value)}
                 />
 
-                <label htmlFor="des">Title</label>
-                <input
-                    id="des"
-                    name="des"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.des}
-                />
-                
-                <label htmlFor="price">Price</label>
-                <input
-                    id="price"
-                    name="price"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.price}
-                />
-                <label htmlFor="image">Image</label>
-                <input
-                    id="image"
-                    name="image"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.image}
-                />
+                <select value={sortType} onChange={(e) => setSortType(e.target.value)}>
+                    <option value="default">Default</option>
+                    <option value="asc">Price: Low to High</option>
+                    <option value="desc">Price: High to Low</option>
+                </select>
+            </div>
 
-                <button type="submit">Submit</button>
-            </form>
-<Sec4 who={"admin"} data={data}/> 
-           
-
+            <div className={styles.cards}>
+                {filteredData?.map(item => (
+                    <ACard key={item.id} item={item} />
+                ))}
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default Admin
+export default Admin;

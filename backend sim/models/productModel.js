@@ -7,6 +7,6 @@ const productSchema=mongoose.Schema(
     price:{type:String,requried:true}
 },{timestamps:true});
 
-const productModel=mongoose.model('Product',productSchema)
+const productModel=mongoose.model('eat',productSchema)
 
 export default productModel;

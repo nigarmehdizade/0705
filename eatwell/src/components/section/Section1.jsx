@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Section1.module.scss'
+import style from './Section1.module.scss'
 const Section1 = () => {
   return (
     <div className={style.main}>
@@ -8,8 +8,7 @@ const Section1 = () => {
             </div>
 
             <div className={style.pages}>
-                <Link to={"/"} className={style.active}>Home</Link>
-                <a href="/about">About</a>
+<a href="">HOME</a>                <a href="/about">About</a>
                 <a href="/offer">offer</a>
                 <a href="/menu">menu</a>
                 <a href="/news">news</a>
@@ -17,10 +16,7 @@ const Section1 = () => {
                 <a href="/contact">contact</a>
             </div>
 
-            <div className={style.burger}>
-                <CiMenuBurger/>
-                <p>MENU</p>
-            </div>
+          {/*  */}
         </div>
   
   )

@@ -1,33 +1,27 @@
+import React, { useEffect } from 'react'
+import { getProductThunk } from '../../redux/reducer/productSlice'
+import FCard from './components/FCard'
+import { useDispatch, useSelector } from 'react-redux'
+import styles from './Galery.module.scss'
+const Galery = () => {
+   const dispatch = useDispatch()
 
-import React from "react";
-import  styles from './Galery.scss'
+    const data = useSelector((state) => state.product.products)
 
-const images = [
-    "https://preview.colorlib.com/theme/eatwell/images/menu_1.jpg.webp" ,
-  "https://preview.colorlib.com/theme/eatwell/images/menu_2.jpg.webp",
-  "https://preview.colorlib.com/theme/eatwell/images/menu_3.jpg.webp0",
-  "https://preview.colorlib.com/theme/eatwell/images/menu_2.jpg.webp",
-  "https://preview.colorlib.com/theme/eatwell/images/menu_3.jpg.webp",
-  "https://preview.colorlib.com/theme/eatwell/images/menu_1.jpg.webp"
-];
-
-const Gallery = () => {
+    useEffect(() => {
+        dispatch(getProductThunk())
+    }, [])
   return (
-    <div className="gallery-container">
-      <h2 className="gallery-title">Gallery</h2>
-      <p className="gallery-subtitle">
-        Far far away, behind the word mountains, far from the countries Vokalia
-        and Consonantia, there live the blind texts.
-      </p>
-      <div className="gallery-grid">
-        {images.map((image, index) => (
-          <div key={index} className="gallery-item">
-            <img src={image} alt={`Gallery Item ${index + 1}`} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+    <div className={styles.container}>
+            <div className={styles.content}>
+              <h3>Our Offer This Summer</h3>
+                <p>Far far away, behind the word mountains, far from the countries <br /> Vokalia and Consonantia, there live the blind texts.</p>
+                <div className={styles.cards}>
+                    {data?.map(item => <FCard item={item} />)}
+                </div>
+            </div>
+        </div>
+  )
+}
 
-export default Gallery;
+export default Galery

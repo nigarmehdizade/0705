@@ -1,0 +1,141 @@
+.news{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #F8F9FA;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    .newstxt{
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        span{
+            font-size: 16px;
+            color: #D4D4D4;
+            letter-spacing: 5px;
+        }
+        h2{
+            font-size: 56px;
+        
+        }
+        p{
+            color: #B8B8B8;
+            text-align: center;
+            font-size: 20px;
+        }
+    }
+    .newscards{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     gap: 10px;
+     .newscard{
+        width: 19%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        .newsimg{
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
+        .cardinfo{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            span{
+                color: #FDA403;
+                font-size: 20px;
+                font-weight: 600;
+            }
+            h3{
+                font-size: 24px;
+                text-align: center;
+            }
+            p{
+                color: #B8B8B8;
+                text-align: center;
+            }
+            button{
+                width: 105px;
+                height: 40px;
+                background-color: #FDA403;
+                color: white;
+                border: none;
+            }
+        }
+     }
+    }
+}
+@media (max-width: 576px) {
+    .news {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        gap: 15px;
+    }
+
+    .newstxt {
+        width: 90%;
+        text-align: center;
+    }
+
+    .newstxt h2 {
+        font-size: 32px;
+    }
+
+    .newstxt p {
+        font-size: 16px;
+    }
+
+    .newscards {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .newscard {
+        width: 100%; 
+        max-width: 550px;
+    }
+
+    .newscard .newsimg img {
+        width: 100%;
+        height: auto;
+    }
+
+    .newscard .cardinfo {
+        width: 90%;
+        padding: 15px;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .newscard .cardinfo span {
+        font-size: 18px;
+    }
+
+    .newscard .cardinfo h3 {
+        font-size: 20px;
+    }
+
+    .newscard .cardinfo p {
+        font-size: 14px;
+    }
+
+    .newscard .cardinfo button {
+        width: 100px;
+        height: 35px;
+        font-size: 14px;
+    }
+}

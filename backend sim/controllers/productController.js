@@ -11,4 +11,12 @@ const postProducts =async (req,res) =>{
     await productModel.create(product)
     res.json(product)
 }
-export {getProducts,postProducts}
+
+const deleteProducts= async(req,res)=>{
+const{id}=req.params
+await productModel.findByIdAndDelete(id)
+  res.json({message: 'Product deleted'})
+    console.log('Product deleted with', id)
+
+}
+export {getProducts,postProducts,deleteProducts}

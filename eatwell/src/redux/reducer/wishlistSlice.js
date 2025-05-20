@@ -9,7 +9,7 @@ export const getWishlistThunk = createAsyncThunk("/wishlist/get", async () => {
 
 export const postWishlistThunk = createAsyncThunk("/wishlist/post", async (data) => {
     await axios.post("http://localhost:4000/wishlist", data);
-    return data
+    return res.data
 })
 
 export const deleteWishlistThunk = createAsyncThunk("/wishlist/delete", async (id) => {

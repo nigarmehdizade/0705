@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import styles from './Wishlist.module.scss'
-import WCard from './components/WCard.jsx';
-import { Link } from 'react-router';
+import {Link} from "react-router";
 import { getWishlistThunk } from '../../redux/reducer/wishlistSlice.js';
+import WCard from './components/WCard.jsx';
 
 const Wishlist = () => {
 
@@ -22,10 +22,7 @@ const Wishlist = () => {
                 <Link to="/basket">Basket</Link>
             </header>
             <div className={styles.cards}>
-               <div className={styles.cards}>
-  {wishlist?.map(item => <WCard key={item._id || item.id} item={item} />)}
-</div>
-
+                {wishlist?.map(item => <WCard key={item._id} item={item} />)}
             </div>
         </div>
     )

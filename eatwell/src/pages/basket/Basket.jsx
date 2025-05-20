@@ -14,7 +14,7 @@ const Basket = () => {
 
     useEffect(() => {
         dispatch(getBasketThunk())
-    })
+    },[dispatch])
 
     return (
         <div className={styles.container}>
@@ -23,7 +23,7 @@ const Basket = () => {
                 <Link to="/wishlist">Wishlist</Link>
             </header>
             <div className={styles.cards}>
-                {basket?.map(item => <BCard  item={item} />)}
+                {basket?.map(item => <BCard item={item} />)}
             </div>
         </div>
     )

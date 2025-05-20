@@ -7,8 +7,8 @@ const getWishlist =async(req,res)=>{
 const postWishlist = async(req,res)=>{
     const {image,name,price}=req.body
     const wishlist={image,name,price}
-    await wishlistModel.create(wislist)
-    res,json(wishlist)
+    await wishlistModel.create(wishlist)
+    res.json(wishlist)
 }
  const deleteWishlist= async(req,res)=>{
     const {id}=req.params

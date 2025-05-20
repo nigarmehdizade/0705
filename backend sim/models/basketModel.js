@@ -1,12 +1,13 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-const basketSchema = mongoose.Schema({
-    name: {type:String, required:true},
-    des: {type:String, required:true},
-    price: {type:String, required:true},
-    image: {type:String, required:true}
-}, {timestamps:true})
+const basketSchema=mongoose.Schema(
+{
+image:{type:String,required:true},
+name:{type:String , required:true},
+price:{type:String,required : true}
+},  { timestamps: true });
 
-const basketModel = mongoose.model('basket', basketSchema)
 
-export default basketModel
+const basketModel=mongoose.model('florabasket',basketSchema)
+
+export default basketModel;
